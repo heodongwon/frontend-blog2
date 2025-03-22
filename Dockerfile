@@ -10,6 +10,7 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* .yarnrc.yml package-lock.json* pnpm-lock.yaml* .npmrc* ./
+COPY .yarn/ ./.yarn/
 RUN \
   if [ -f yarn.lock ]; then \
     corepack enable && corepack prepare yarn@3.6.1 --activate && yarn --frozen-lockfile; \
