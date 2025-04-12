@@ -26,7 +26,7 @@ import siteMetadata from './data/siteMetadata'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 import prettier from 'prettier'
 
-const root = process.cwd()
+const root = process.env.BLOG_PATH ?? process.cwd();
 const isProduction = process.env.NODE_ENV === 'production'
 
 // heroicon mini link
@@ -95,7 +95,7 @@ function createSearchIndex(allBlogs) {
 
 export const Blog = defineDocumentType(() => ({
   name: 'Blog',
-  filePathPattern: 'blog/**/*.mdx',
+  filePathPattern: 'blog/**/*.md',
   contentType: 'mdx',
   fields: {
     title: { type: 'string', required: true },
